@@ -3100,7 +3100,7 @@ nabu.services.VueService(Vue.extend({
 		// update the branding parameters depending on the page
 		updateBranding: function(branding) {
 			var self = this;
-			var fields = ["favicon", "title", "description", "image", "imageAlt", "facebookAppId", "twitterUserName"];
+			var fields = ["favicon", "title", "description", "siteName", "image", "imageAlt", "facebookAppId", "twitterUserName"];
 			// the current branding takes the specific branding and (if absent) the default branding
 			fields.forEach(function(field) {
 				self.currentBranding[field] = branding[field] ? branding[field] : self.branding[field];

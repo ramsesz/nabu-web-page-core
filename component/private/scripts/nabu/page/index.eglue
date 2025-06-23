@@ -55,6 +55,9 @@ if (configuration/branding/facebookAppId != null)
 if (configuration/branding/twitterUserName != null)
 	echo('		<meta property="twitter:site" content="' + configuration/branding/twitterUserName + '"/>\n')
 
+if (configuration/branding/siteName != null)
+	echo('		<meta property="og:site_name" content="' + configuration/branding/siteName + '"/>' + "\n")
+
 if (environment("url") != null)
 	echo('		<meta property="og:url" content="' + environment("url") + environment("serverPath") + '"/>\n')
 	

@@ -54,7 +54,10 @@ else if (configuration/title != null)
 
 if (configuration/branding/description != null)
 	echo('		<meta property="og:description" content="' + configuration/branding/description + '"/>\n')
-	
+
+if (configuration/branding/siteName != null)
+	echo('		<meta property="og:site_name" content="' + configuration/branding/siteName + '"/>\n')
+		
 if (configuration/branding/image != null)
 	echo('		<meta property="og:image" content="' + configuration/branding/image + '"/>\n')
 	echo('		<meta name="twitter:card" content="summary_large_image">\n')
