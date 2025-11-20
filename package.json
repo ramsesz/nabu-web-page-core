@@ -1,0 +1,20 @@
+{
+    "name": "nabu-web-page-core",
+    "version": "1.0.0",
+    "description": "Nabu Web Page Core Components",
+    "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage",
+        "test:badge": "jest v2/component/public/bundled/views/badge/badge.spec.js"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.0.0",
+        "@babel/preset-env": "^7.0.0",
+        "babel-jest": "^27.0.0",
+        "jest": "^27.0.0",
+        "jest-environment-jsdom": "^27.0.0",
+        "vue": "^2.6.14",
+        "vue-jest": "^3.0.7"
+    }
+}
