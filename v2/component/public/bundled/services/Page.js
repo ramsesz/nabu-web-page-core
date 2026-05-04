@@ -263,6 +263,39 @@ nabu.services.VueService(Vue.extend({
 		});
 	},
 	methods: {
+		hashObject: function(value) {
+			var stableStringify = function(input, seen) {
+				if (input == null || typeof input !== "object") {
+					return JSON.stringify(input);
+				}
+				if (seen.indexOf(input) >= 0) {
+					return '"[Circular]"';
+				}
+				seen.push(input);
+				var serialized;
+				if (input instanceof Array) {
+					serialized = "[" + input.map(function(x) { return stableStringify(x, seen); }).join(",") + "]";
+				}
+				else {
+					var keys = Object.keys(input).sort();
+					serialized = "{" + keys.map(function(key) {
+						return JSON.stringify(key) + ":" + stableStringify(input[key], seen);
+					}).join(",") + "}";
+				}
+				seen.pop();
+				return serialized;
+			};
+			var fnv1a32 = function(str) {
+				var hash = 0x811c9dc5;
+				for (var i = 0; i < str.length; i++) {
+					hash ^= str.charCodeAt(i);
+					hash += (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
+				}
+				var hex = (hash >>> 0).toString(16);
+				return ("00000000" + hex).slice(-8);
+			};
+			return fnv1a32(stableStringify(value, []));
+		},
 		isMac: function() {
 			return /Mac/.test(navigator.platform) || navigator.userAgent.includes('Macintosh');
 		},
