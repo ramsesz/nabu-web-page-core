@@ -71,13 +71,10 @@ Vue.component("page-form-checkbox-list", {
 			required: false
 		}
 	},
-	// if we have an operation binding, let's retrigger the data lookup (for checkbox-list 2)
 	watch: {
-		operationBinding: {deep: true, handler: function(newValue) {
-			// set to dirty
-			// the first checkbox-list is the form-checkbox-list which in turn has its own ref
-			if (this.$refs.checkbox-list && this.$refs.checkbox-list.$refs.checkbox-list) {
-				this.$refs.checkbox-list.$refs.checkbox-list.markDirty();
+		operationBinding: {deep: true, handler: function() {
+			if (this.$refs["checkbox-list"] && this.$refs["checkbox-list"].markDirty) {
+				this.$refs["checkbox-list"].markDirty();
 			}
 		}}
 	},
