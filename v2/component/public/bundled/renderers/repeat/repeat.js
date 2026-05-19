@@ -976,6 +976,9 @@ Vue.component("renderer-repeat", {
 		},
 		// TODO: allow the user to choose their own key in the record
 		getKey: function(record) {
+			if (this.target.repeat && this.target.repeat.useHashAsKey) {
+				return this.$services.page.hashObject(record);
+			}
 			if (record && record.id) {
 				return record.id;
 			}

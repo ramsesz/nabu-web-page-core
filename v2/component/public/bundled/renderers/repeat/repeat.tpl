@@ -211,6 +211,7 @@
 		<n-form-switch v-model="target.repeat.disableMouseSelection" v-if="target.repeat.selectable" label="Disable mouse selection"/>
 		
 		<n-form-switch v-model="target.repeat.raw" label="Add raw data"/>
+		<n-form-switch v-model="target.repeat.useHashAsKey" label="Use hash as key"/>
 			
 		<n-form-switch v-if="target.repeat.type == 'operation'" v-model="target.repeat.scrollLoad" label="Lazy Loading"/> 
 			
